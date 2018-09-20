@@ -1,3 +1,9 @@
+<h2>My Volcanoes</h2>
+<ul class="volcanoes">
+  <li *ngFor="let volcano of volcanoes">
+    <span class="badge">{{volcano.id}}</span>{{volcano.name}}
+  </li>
+</ul>
 <h2>{{volcano.name | uppercase}} Details</h2>
 <div><span>id: </span>{{volcano.id}}</div>
 <div>
