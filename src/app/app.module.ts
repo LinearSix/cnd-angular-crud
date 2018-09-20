@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { VolcanoesComponent } from './volcanoes/volcanoes.component';
@@ -10,7 +11,8 @@ import { VolcanoesComponent } from './volcanoes/volcanoes.component';
     VolcanoesComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

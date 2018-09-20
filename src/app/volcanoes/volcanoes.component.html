@@ -1,3 +1,7 @@
 <h2>{{volcano.name | uppercase}} Details</h2>
 <div><span>id: </span>{{volcano.id}}</div>
-<div><span>name: </span>{{volcano.name}}</div>
+<div>
+  <label>name:
+    <input [(ngModel)]="volcano.name" placeholder="name">
+  </label>
+</div>
