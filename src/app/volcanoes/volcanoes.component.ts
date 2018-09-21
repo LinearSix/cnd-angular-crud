@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+
 import {Volcano} from '../volcano';
-import {VOLCANOES} from '../mock-volcanoes';
+import {VolcanoService} from '../volcano.service';
 
 @Component({
   selector: 'app-volcanoes',
@@ -8,14 +9,19 @@ import {VOLCANOES} from '../mock-volcanoes';
   styleUrls: ['./volcanoes.component.css']
 })
 export class VolcanoesComponent implements OnInit {
-  volcanoes = VOLCANOES;
+  volcanoes: Volcano[];
   selectedVolcano: Volcano;
 
-  constructor() {
+  constructor(private volcanoService: VolcanoService) {
   }
 
 
   ngOnInit() {
+    this.getVolcanoes();
+  }
+
+  getVolcanoes(): void {
+    this.volcanoes = this.volcanoService.getVolcanoes();
   }
 
   onSelect(volcano: Volcano): void {
