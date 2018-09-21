@@ -6,12 +6,4 @@
     <span class="badge">{{volcano.id}}</span>{{volcano.name}}
   </li>
 </ul>
-<div *ngIf="selectedVolcano">
-  <h2>{{selectedVolcano.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{selectedVolcano.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="selectedVolcano.name" placeholder="name">
-    </label>
-  </div>
-</div>
+<app-volcano-edit [volcano]="selectedVolcano"></app-volcano-edit>
