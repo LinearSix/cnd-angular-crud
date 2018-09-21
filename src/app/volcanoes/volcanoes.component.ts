@@ -21,7 +21,8 @@ export class VolcanoesComponent implements OnInit {
   }
 
   getVolcanoes(): void {
-    this.volcanoes = this.volcanoService.getVolcanoes();
+    this.volcanoService.getVolcanoes()
+      .subscribe(volcanoes => this.volcanoes = volcanoes);
   }
 
   onSelect(volcano: Volcano): void {

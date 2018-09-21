@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {Observable, of} from 'rxjs';
 
 import {Volcano} from './volcano';
 import {VOLCANOES} from './mock-volcanoes';
@@ -11,7 +12,7 @@ export class VolcanoService {
   constructor() {
   }
 
-  getVolcanoes(): Volcano[] {
-    return VOLCANOES;
+  getVolcanoes(): Observable<Volcano[]> {
+    return of(VOLCANOES);
   }
 }
