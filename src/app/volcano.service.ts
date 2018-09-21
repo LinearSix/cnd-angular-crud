@@ -18,4 +18,10 @@ export class VolcanoService {
     this.messageService.add('VolcanoService: fetched volcanoes');
     return of(VOLCANOES);
   }
+
+  getVolcano(id: number): Observable<Volcano> {
+    // TODO: send the message _after_ fetching the volcano
+    this.messageService.add(`VolcanoService: fetched volcano id=${id}`);
+    return of(VOLCANOES.find(volcano => volcano.id === id));
+  }
 }

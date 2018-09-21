@@ -1,5 +1,9 @@
 import {Component, OnInit, Input} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Location} from '@angular/common';
+
 import {Volcano} from '../volcano';
+import {VolcanoService} from '../volcano.service';
 
 @Component({
   selector: 'app-volcano-edit',
@@ -9,10 +13,24 @@ import {Volcano} from '../volcano';
 export class VolcanoEditComponent implements OnInit {
   @Input() volcano: Volcano;
 
-  constructor() {
+  constructor(
+    private route: ActivatedRoute,
+    private volcanoService: VolcanoService,
+    private location: Location
+  ) {}
+
+  ngOnInit(): void {
+    this.getVolcano();
   }
 
-  ngOnInit() {
+  getVolcano(): void {
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.volcanoService.getVolcano(id)
+      .subscribe(volcano => this.volcano = volcano);
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }

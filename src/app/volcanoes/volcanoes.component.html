@@ -1,9 +1,8 @@
 <h2>My Volcanoes</h2>
 <ul class="volcanoes">
-  <li *ngFor="let volcano of volcanoes"
-      (click)="onSelect(volcano)"
-      [class.selected]="volcano === selectedVolcano">
-    <span class="badge">{{volcano.id}}</span>{{volcano.name}}
+  <li *ngFor="let volcano of volcanoes">
+    <a routerLink="/edit/{{volcano.id}}">
+      <span class="badge">{{volcano.id}}</span>{{volcano.name}}
+    </a>
   </li>
 </ul>
-<app-volcano-edit [volcano]="selectedVolcano"></app-volcano-edit>

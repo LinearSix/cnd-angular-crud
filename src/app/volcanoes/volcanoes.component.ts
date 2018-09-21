@@ -10,11 +10,9 @@ import {VolcanoService} from '../volcano.service';
 })
 export class VolcanoesComponent implements OnInit {
   volcanoes: Volcano[];
-  selectedVolcano: Volcano;
 
   constructor(private volcanoService: VolcanoService) {
   }
-
 
   ngOnInit() {
     this.getVolcanoes();
@@ -23,10 +21,6 @@ export class VolcanoesComponent implements OnInit {
   getVolcanoes(): void {
     this.volcanoService.getVolcanoes()
       .subscribe(volcanoes => this.volcanoes = volcanoes);
-  }
-
-  onSelect(volcano: Volcano): void {
-    this.selectedVolcano = volcano;
   }
 
 }

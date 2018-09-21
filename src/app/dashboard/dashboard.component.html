@@ -1,6 +1,7 @@
 <h3>Top Volcanoes</h3>
 <div class="grid grid-pad">
-  <a *ngFor="let volcano of volcanoes" class="col-1-4">
+  <a *ngFor="let volcano of volcanoes" class="col-1-4"
+  routerLink="/edit/{{volcano.id}}">
     <div class="module hero">
       <h4>{{volcano.name}}</h4>
     </div>
