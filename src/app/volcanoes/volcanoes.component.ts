@@ -9,16 +9,17 @@ import {VOLCANOES} from '../mock-volcanoes';
 })
 export class VolcanoesComponent implements OnInit {
   volcanoes = VOLCANOES;
-  volcano: Volcano = {
-    id: 1,
-    name: 'Arenal'
-  };
+  selectedVolcano: Volcano;
 
   constructor() {
   }
 
 
   ngOnInit() {
+  }
+
+  onSelect(volcano: Volcano): void {
+    this.selectedVolcano = volcano;
   }
 
 }
