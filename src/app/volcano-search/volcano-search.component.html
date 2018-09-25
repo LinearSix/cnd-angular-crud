@@ -1,0 +1,13 @@
+<div id="search-component">
+  <h4>Volcano Search</h4>
+
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+
+  <ul class="search-result">
+    <li *ngFor="let volcano of volcanoes$ | async" >
+      <a routerLink="/detail/{{volcano.id}}">
+        {{volcano.name}}
+      </a>
+    </li>
+  </ul>
+</div>
