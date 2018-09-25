@@ -1,4 +1,13 @@
 <h2>My Volcanoes</h2>
+<div>
+  <label>Volcano name:
+    <input #volcanoName />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(volcanoName.value); volcanoName.value=''">
+    add
+  </button>
+</div>
 <ul class="volcanoes">
   <li *ngFor="let volcano of volcanoes">
     <a routerLink="/edit/{{volcano.id}}">

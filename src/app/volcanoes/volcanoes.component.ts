@@ -23,4 +23,13 @@ export class VolcanoesComponent implements OnInit {
       .subscribe(volcanoes => this.volcanoes = volcanoes);
   }
 
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.volcanoService.addVolcano({ name } as Volcano)
+      .subscribe(volcano => {
+        this.volcanoes.push(volcano);
+      });
+  }
+
 }

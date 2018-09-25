@@ -40,7 +40,7 @@ export class VolcanoService {
       );
   }
 
-  /** PUT: update the hero on the server */
+  /** PUT: update the volcano on the server */
   updateVolcano(volcano: Volcano): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -48,6 +48,17 @@ export class VolcanoService {
     return this.http.put(this.volcanoesUrl, volcano, httpOptions).pipe(
       tap(_ => this.log(`updated volcano id=${volcano.id}`)),
       catchError(this.handleError<any>('updateVolcano'))
+    );
+  }
+
+  /** POST: add a new volcano to the server */
+  addVolcano (volcano: Volcano): Observable<Volcano> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.http.post<Volcano>(this.volcanoesUrl, volcano, httpOptions).pipe(
+      tap(_ => this.log(`added volcano w/ id=${volcano.id}`)),
+      catchError(this.handleError<Volcano>('addVolcano'))
     );
   }
 
