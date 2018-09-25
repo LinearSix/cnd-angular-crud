@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {HttpClientModule} from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
+import { VolcanoSearchComponent } from './volcano-search/volcano-search.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { InMemoryDataService }  from './in-memory-data.service';
     VolcanoesComponent,
     VolcanoEditComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    VolcanoSearchComponent
   ],
   imports: [
     BrowserModule,

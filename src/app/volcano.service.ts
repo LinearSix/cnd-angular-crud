@@ -75,6 +75,18 @@ export class VolcanoService {
     );
   }
 
+  /* GET volcanoes whose name contains search term */
+  searchVolcanoes(term: string): Observable<Volcano[]> {
+    if (!term.trim()) {
+      // if not search term, return empty volcano array.
+      return of([]);
+    }
+    return this.http.get<Volcano[]>(`${this.volcanoesUrl}/?name=${term}`).pipe(
+      tap(_ => this.log(`found volcanoes matching "${term}"`)),
+      catchError(this.handleError<Volcano[]>('searchVolcanoes', []))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

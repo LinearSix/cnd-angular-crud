@@ -2,8 +2,9 @@
 <div class="grid grid-pad">
   <a *ngFor="let volcano of volcanoes" class="col-1-4"
   routerLink="/edit/{{volcano.id}}">
-    <div class="module hero">
+    <div class="module volcano">
       <h4>{{volcano.name}}</h4>
     </div>
   </a>
 </div>
+<app-volcano-search></app-volcano-search>
