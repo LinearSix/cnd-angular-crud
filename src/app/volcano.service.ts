@@ -40,6 +40,17 @@ export class VolcanoService {
       );
   }
 
+  /** PUT: update the hero on the server */
+  updateVolcano(volcano: Volcano): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.http.put(this.volcanoesUrl, volcano, httpOptions).pipe(
+      tap(_ => this.log(`updated volcano id=${volcano.id}`)),
+      catchError(this.handleError<any>('updateVolcano'))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

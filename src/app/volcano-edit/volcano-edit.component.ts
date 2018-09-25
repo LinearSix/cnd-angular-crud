@@ -17,7 +17,8 @@ export class VolcanoEditComponent implements OnInit {
     private route: ActivatedRoute,
     private volcanoService: VolcanoService,
     private location: Location
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.getVolcano();
@@ -31,6 +32,11 @@ export class VolcanoEditComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  save(): void {
+    this.volcanoService.updateVolcano(this.volcano)
+      .subscribe(() => this.goBack());
   }
 
 }
