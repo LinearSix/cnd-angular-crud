@@ -62,6 +62,19 @@ export class VolcanoService {
     );
   }
 
+  /** DELETE: delete the volcano from the server */
+  deleteVolcano (volcano: Volcano | number): Observable<Volcano> {
+    const id = typeof volcano === 'number' ? volcano : volcano.id;
+    const url = `${this.volcanoesUrl}/${id}`;
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.http.delete<Volcano>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted volcano id=${id}`)),
+      catchError(this.handleError<Volcano>('deleteVolcano'))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.

@@ -13,5 +13,7 @@
     <a routerLink="/edit/{{volcano.id}}">
       <span class="badge">{{volcano.id}}</span>{{volcano.name}}
     </a>
+    <button class="delete" title="delete volcano"
+            (click)="delete(volcano)">x</button>
   </li>
 </ul>

@@ -32,4 +32,10 @@ export class VolcanoesComponent implements OnInit {
       });
   }
 
+  delete(volcano: Volcano): void {
+    // this removes the volcano from the array, bad state management??
+    this.volcanoes = this.volcanoes.filter(v => v !== volcano);
+    this.volcanoService.deleteVolcano(volcano).subscribe();
+  }
+
 }
