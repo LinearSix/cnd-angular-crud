@@ -10,6 +10,10 @@ buildscript {
 	}
 }
 
+plugins {
+    id "com.moowork.node" version "1.2.0"
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
@@ -23,6 +27,21 @@ repositories {
 	mavenCentral()
 }
 
+node {
+    download = true
+    version = '10.4.0'
+    npmWorkDir = file("${project.buildDir}/npm")
+    nodeModulesDir = file("${project.projectDir}/client")
+}
+
+task copyResources(type: Copy) {
+    from 'client/dist/angular-crud' into 'src/main/resources/static'
+}
+copyResources.dependsOn npm_run_build
+
+processResources.dependsOn copyResources
+
+test.outputs.upToDateWhen {false}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
