@@ -18,3 +18,4 @@ $ oc patch bc/kotlin-server -p '{"spec":{"resources":{"limits":{"memory":"1Gi"}}
 - [Proxy](https://juristr.com/blog/2016/11/configure-proxy-api-angular-cli/)
 - [More Proxy](https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/proxy.md)
 - [Spring Logging](https://www.javadevjournal.com/spring/log-incoming-requests-spring/)
+- [OpenShift WebHooks](https://docs.openshift.com/container-platform/3.5/dev_guide/builds/triggering_builds.html)
