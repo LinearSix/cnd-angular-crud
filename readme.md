@@ -2,6 +2,8 @@
 ## dev setup
 
 1. `brew cask install chromedriver`
+1. `brew install postgresql`
+1. `brew services start postgresql`
 
 ## Deployment
 

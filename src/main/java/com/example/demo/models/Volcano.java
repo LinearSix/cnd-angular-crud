@@ -1,8 +1,12 @@
 package com.example.demo.models;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 
+@Entity
 public class Volcano {
+    @Id
     private long id;
     private String name;
 

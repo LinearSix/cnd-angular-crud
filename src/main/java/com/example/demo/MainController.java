@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.models.Volcano;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,14 +13,12 @@ import java.util.List;
 @RestController
 public class MainController {
 
-    private List<Volcano> volcanoes = Arrays.asList(
-            new Volcano(1, "Stromboli"),
-            new Volcano(2, "Etna")
-    );
+    @Autowired
+    VolcanoRepository volcanoRepository;
 
     @GetMapping("/api/volcanoes")
     public List<Volcano> getVolcanoes() {
-        return volcanoes;
+        return volcanoRepository.findAll();
     }
 
     @Bean

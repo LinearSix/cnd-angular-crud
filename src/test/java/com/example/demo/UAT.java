@@ -36,21 +36,19 @@ public class UAT extends FluentTest {
     @Value("${local.server.port}")
     private String port;
 
-//    @Autowired
-//    MenuRepository menuRepository;
+    @Autowired
+    VolcanoRepository volcanoRepository;
 
     private ObjectMapper mapper = new ObjectMapper();
 
     @Before
     public void before() {
-//        orderRepository.deleteAll();
-//        menuRepository.deleteAll();
+        volcanoRepository.deleteAll();
     }
 
     @After
     public void after() {
-//        orderRepository.deleteAll();
-//        menuRepository.deleteAll();
+        volcanoRepository.deleteAll();
     }
 
     @Override
@@ -59,11 +57,6 @@ public class UAT extends FluentTest {
         opt.addArguments("--headless");
         opt.addArguments("--disable-gpu");
         opt.addArguments("--no-sandbox");
-        String path = System.getenv("GOOGLE_CHROME_BIN"); // heroku-specific
-        if(!StringUtils.isEmpty(System.getenv("GOOGLE_CHROME_BIN"))) {
-            System.out.println("Setting binary path to: " + path);
-            opt.setBinary(path);
-        }
         WebDriver driver = new ChromeDriver(opt);
         return driver;
     }
@@ -71,11 +64,11 @@ public class UAT extends FluentTest {
     @Test
     public void shouldShowVolcanoesInChrome() {
         // Setup
-        List<Volcano> combos = Arrays.asList(
+        List<Volcano> expected = Arrays.asList(
                 new Volcano(1, "Stromboli"),
                 new Volcano(2, "Etna")
         );
-        //menuRepository.save(expected);
+        volcanoRepository.saveAll(expected);
 
         // Exercise
         goTo("http://localhost:" + this.port + "/volcanoes");
