@@ -1,4 +1,8 @@
 
+## dev setup
+
+1. `brew cask install chromedriver`
+
 ## Deployment
 
 To deploy, run:
