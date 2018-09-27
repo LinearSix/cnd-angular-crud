@@ -69,7 +69,7 @@ public class UAT extends FluentTest {
     }
 
     @Test
-    public void shouldRenderMenuFromDb() {
+    public void shouldShowVolcanoesInChrome() {
         // Setup
         List<Volcano> combos = Arrays.asList(
                 new Volcano(1, "Stromboli"),

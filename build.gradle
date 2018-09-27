@@ -43,6 +43,12 @@ processResources.dependsOn copyResources
 
 test.outputs.upToDateWhen {false}
 
+test {
+    afterTest { desc, result ->
+        logger.quiet "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
+    }
+}
+
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
     compile group: 'org.apache.commons', name: 'commons-io', version: '1.3.2'
