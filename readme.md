@@ -8,13 +8,13 @@
 To deploy, run:
 
 ```sh
-$ oc new-app --strategy=source bgard6977/docker-test~https://github.com/bgard6977/kotlin-server
+$ oc new-app --strategy=source bgard6977/docker-test~https://github.com/gSchool/cnd-angular-crud
 ```
 
 The build will fail due to insufficient memory, so increase memory:
 
 ```sh
-$ oc patch bc/kotlin-server -p '{"spec":{"resources":{"limits":{"memory":"1Gi"}}}}'
+$ oc patch bc/cnd-angular-crud -p '{"spec":{"resources":{"limits":{"memory":"1Gi"}}}}'
 ```
 
 ## References
