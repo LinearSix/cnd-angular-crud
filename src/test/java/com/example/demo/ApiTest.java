@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class API {
+public class ApiTest {
     @Autowired
     private MockMvc mvc;
 
@@ -37,7 +37,7 @@ public class API {
 
     private ObjectMapper mapper = new ObjectMapper();
 
-    public API() {
+    public ApiTest() {
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
     }
 
@@ -52,7 +52,7 @@ public class API {
     }
 
     @Test
-    public void testGetMenu() throws Exception {
+    public void testGetVolcanoes() throws Exception {
         // Setup
         List<Volcano> expected = Arrays.asList(
                 new Volcano(1, "Stromboli"),
@@ -74,4 +74,31 @@ public class API {
         assertEquals("GET response should match what is in DB", expectedJson, actualJson);
     }
 
+    @Test
+    public void testSaveVolcano() throws Exception {
+        // Setup
+        Volcano expected = new Volcano(1, "Stromboli");
+
+        // Exercise
+        String json = mapper.writeValueAsString(expected);
+        String response = mvc.perform(post("/api/volcanoes")
+                .content(json).contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
+        Volcano actual = mapper.readValue(response, Volcano.class);
+
+        // Assert
+        List<Volcano> volcanoes = volcanoRepository.findAll();
+        assertEquals(1, volcanoes.size());
+        assertEquals(
+                mapper.writeValueAsString(volcanoes.get(0)),
+                mapper.writeValueAsString(actual)
+        );
+
+        String actualJson = mapper.writeValueAsString(actual);
+        String expectedJson = mapper.writeValueAsString(expected);
+        assertEquals(expectedJson, actualJson);
+    }
 }

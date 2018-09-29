@@ -32,7 +32,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Wait
-public class UAT extends FluentTest {
+public class BrowserTest extends FluentTest {
     @Value("${local.server.port}")
     private String port;
 
