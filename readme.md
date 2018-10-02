@@ -9,6 +9,23 @@
 1. `psql -c "create database volcano_test"`
 1. `psql -c "create user postgres with SUPERUSER"`
 
+## Mapping
+
+The following topics are covered in "standard" CND:
+
+![topics](img/topics.jpg)
+
+Here is their mapping to Angular:
+
+1. `Jest unit tests` -> [Service testing](https://angular.io/guide/testing#service-tests)
+1. `shallow` -> [Component Testing](https://angular.io/guide/testing#component-dom-testing) 
+1. `fetch` -> [HttpClient](https://angular.io/guide/http#httpclient)
+1. `fetch-mock` -> ?
+1. `redux` -> N/A
+1. `redux-thunk` -> N/A
+1. `redux-first-routing` -> [Angular Router](https://angular.io/guide/router)
+1. `proxy` -> [WebPack DevServer Proxy](https://juristr.com/blog/2016/11/configure-proxy-api-angular-cli/)
+
 ## Deployment
 
 To deploy, run:
