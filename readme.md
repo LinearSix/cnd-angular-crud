@@ -85,6 +85,33 @@ The build will fail due to insufficient memory, so increase memory:
 $ oc patch bc/cnd-angular-crud -p '{"spec":{"resources":{"limits":{"memory":"1500Mi"}}}}'
 ```
 
+After the build completes, you'll see a connection error to postgres. Create a db:
+
+![create db](img/create_db.png)
+
+Then configure the datasource environment variables for your app:
+
+![datasource](img/datasource.png)
+
+```
+SPRING_DATASOURCE_URL
+jdbc:postgresql://postgresql:5432/volcano
+
+SPRING_DATASOURCE_USERNAME
+admin
+
+SPRING_DATASOURCE_PASSWORD
+password
+```
+
+Then you can browse to the app, and you should see it crash, because Spring can't serve JSON from a database without gobs of memory:
+
+![oom](img/oom.png)
+
+So crank it up:
+
+![mem](img/resource_limits.png)
+
 ## References
 
 - [Proxy](https://juristr.com/blog/2016/11/configure-proxy-api-angular-cli/)
