@@ -9,7 +9,7 @@
 1. `psql -c "create database volcano_test"`
 1. `psql -c "create user postgres with SUPERUSER"`
 
-## Mapping
+## Mapping React to Angular
 
 The following topics are covered in "standard" CND:
 
@@ -26,6 +26,44 @@ Here is their mapping to Angular:
 1. `redux-thunk` -> N/A
 1. `redux-first-routing` -> [Angular Router](https://angular.io/guide/router)
 1. `proxy` -> [WebPack DevServer Proxy](https://juristr.com/blog/2016/11/configure-proxy-api-angular-cli/)
+
+## Mapping Heroku to OpenShift
+
+Heroku was merely a deployment platform, until they added [Heroku CI](https://devcenter.heroku.com/articles/heroku-ci) and [Heroku Pipelines](https://devcenter.heroku.com/articles/pipelines).
+
+Likewise, OpenShift was merely a deployment platform for docker containers, until they added CI capabilities.
+
+There are 3 ways to build in OpenShift:
+
+- docker (not allowed)
+- source (doesn't do gradle)
+- pipeline (can build your code, but can't deploy it to OpenShift)
+
+Of these, the `source` build type seems to be most supported. To get it to support gradle, you need to create a custom [source 2 image builder image](https://blog.openshift.com/create-s2i-builder-image/).
+
+We could use an existing s2i builder image for Spring Boot, but since we also want postgres, chrome, and chromedriver installed, we need to make our own.
+
+Source to image is a strange "technology", since it appears to just be a proprietary replacement for [docker add](https://docs.docker.com/engine/reference/builder/#add) `my.jar`.
+
+It would make sense to use the `pipeline` build type instead, except OpenShift runs a Jenkins docker image without docker installed, so Jenkins can build your code, but it can't build a docker image.
+
+The `docker` build type is disabled in OpenShift online, otherwise we could use that.
+
+In the future, it might make sense to create our own Jenkins docker image with docker installed, then we could use a standard CI tool to do a standard docker build.
+
+## OpenShift Gotchas
+
+When working with OpenShift, the most common error encountered will be `OOM killed`, which you can't see in the logs. You need to go under the "pods" menu.
+
+To resolve this error, you need to edit the yaml in various places to up the `memory` part of the `resources` section for your: build, deployment, pod, etc.
+
+See below for one example on how to do this from the command line.
+
+Also, "too many open files" errors will be observed. This doesn't appear to affect anything?
+
+Sometimes OpenShift Online is also just unstable. For example, it just hangs forever while trying to run a build, in which case try again later.
+
+Be aware, a free plan takes a long time to activate, and doesn't come with enough memory to run Spring apps or Gradle builds. You will have to upgrade to pro.
 
 ## Deployment
 
