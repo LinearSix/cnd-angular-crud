@@ -42,4 +42,5 @@ Thumbs.db
 # gradle
 .gradle/
 build/
+out/
 
