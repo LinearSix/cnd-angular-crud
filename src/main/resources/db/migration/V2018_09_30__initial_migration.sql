@@ -1,7 +1,5 @@
 create table if not exists volcano
 (
-	id bigint not null
-		constraint volcano_pkey
-			primary key,
+	id SERIAL PRIMARY KEY,
 	name varchar(255)
 );

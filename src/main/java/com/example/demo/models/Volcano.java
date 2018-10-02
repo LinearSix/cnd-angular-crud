@@ -1,29 +1,28 @@
 package com.example.demo.models;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
 public class Volcano {
     @Id
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private String name;
 
     public Volcano() {
     }
 
-    public Volcano(long id, String name) {
-        this.id = id;
+    public Volcano(String name) {
         this.name = name;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
+    public Volcano(Integer id, String name) {
         this.id = id;
+        this.name = name;
     }
 
     public String getName() {
@@ -46,5 +45,13 @@ public class Volcano {
     @Override
     public int hashCode() {
         return Objects.hash(id, name);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

@@ -77,7 +77,7 @@ public class ApiTest {
     @Test
     public void testSaveVolcano() throws Exception {
         // Setup
-        Volcano expected = new Volcano(1, "Stromboli");
+        Volcano expected = new Volcano("Stromboli");
 
         // Exercise
         String json = mapper.writeValueAsString(expected);
@@ -88,6 +88,7 @@ public class ApiTest {
                 .getResponse()
                 .getContentAsString();
         Volcano actual = mapper.readValue(response, Volcano.class);
+        expected.setId(actual.getId());
 
         // Assert
         List<Volcano> volcanoes = volcanoRepository.findAll();
