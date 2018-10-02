@@ -73,10 +73,16 @@ To deploy, run:
 $ oc new-app --strategy=source bgard6977/docker-test~https://github.com/gSchool/cnd-angular-crud
 ```
 
+And expose:
+
+```sh
+oc expose svc/cnd-angular-crud
+```
+
 The build will fail due to insufficient memory, so increase memory:
 
 ```sh
-$ oc patch bc/cnd-angular-crud -p '{"spec":{"resources":{"limits":{"memory":"1Gi"}}}}'
+$ oc patch bc/cnd-angular-crud -p '{"spec":{"resources":{"limits":{"memory":"1500Mi"}}}}'
 ```
 
 ## References
