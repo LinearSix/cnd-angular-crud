@@ -1,9 +1,13 @@
 
-## dev setup
+## dev setup (on mac with brew 2018-10-02)
 
 1. `brew cask install chromedriver`
 1. `brew install postgresql`
 1. `brew services start postgresql`
+1. `createdb`
+1. `psql -c "create database volcano"`
+1. `psql -c "create database volcano_test"`
+1. `psql -c "create user postgres with SUPERUSER"`
 
 ## Deployment
 
