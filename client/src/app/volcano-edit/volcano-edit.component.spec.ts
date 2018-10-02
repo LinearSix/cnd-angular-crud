@@ -1,6 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { VolcanoEditComponent } from './volcano-edit.component';
+import {VolcanoEditComponent} from './volcano-edit.component';
+import {FormsModule} from "@angular/forms";
+import {RouterTestingModule} from "@angular/router/testing";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 
 describe('VolcanoEditComponent', () => {
   let component: VolcanoEditComponent;
@@ -8,9 +11,10 @@ describe('VolcanoEditComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VolcanoEditComponent ]
+      declarations: [VolcanoEditComponent],
+      imports: [FormsModule, RouterTestingModule, HttpClientTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
