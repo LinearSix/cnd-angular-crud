@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build && ng test --browsers ChromeHeadless --watch=false",
+    "build": "ng test && ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

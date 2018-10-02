@@ -50,3 +50,4 @@ $ oc patch bc/cnd-angular-crud -p '{"spec":{"resources":{"limits":{"memory":"1Gi
 - [Build environment](https://github.com/bgard6977/docker-test)
 - [Karma with ChromeHeadless](https://gist.github.com/wingsuitist/c2c3095b855e9f1054d39df13a317f52)
 - [Testing with mock routes](https://stackoverflow.com/questions/39577920/angular-2-unit-testing-components-with-routerlink)
+- [Chrome headless with karma](https://cvuorinen.net/2017/05/running-angular-tests-in-headless-chrome/)
