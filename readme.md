@@ -11,6 +11,13 @@
 
 ## Mapping React to Angular
 
+### Angular project setup
+
+1. `npm install -g @angular/cli`
+1. `ng new app-name`
+1. `cd app-name`
+1. `ng serve --open`
+
 The following topics are covered in "standard" CND:
 
 ![topics](img/topics.jpg)
